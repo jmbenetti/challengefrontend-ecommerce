@@ -1,16 +1,26 @@
 <!DOCTYPE html>
 <html lang="es-ar">
-<title>E-commerce Alura Geek</title>
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <!-- <meta name="viewport" content="width=device-width, initial-scale=1.0"> -->
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
   <title>E-commerce Alura Geek</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
- 
+<div id="top">
+  <div id="logo" class="flexcontainer-row">
+    <div id="imglogo"><img src="./img/logo.png"></div>
+    <div id="imgalurageek"><img src="./img/alurageek.png"></div>
+    <form action="/" method="GET" class="form">
+      <input type="search" placeholder="¿Qué deseas buscar?" class="campo-buscar" />
+      <button type="submit" class="boton-buscar"> 
+        <img src="./iconos/lupa.png">
+      </button>
+    </form>
+    <button type="button" id="boton-login" class="boton-blanco">Login</button>
+  </div>
+</div> 
 <script src="script.js"></script>
 </body>
 <footer>
