@@ -1,13 +1,25 @@
 * {
+  margin: 0;
+  padding: 0;
   box-sizing: border-box;
 }
 
 html{
   font-size:  16px;
+  background-color: white;
+}
+
+body {
+  background-color: white;
+  font-family: Raleway, Verdana, Geneva, sans-serif;
+  margin: .5em;
 }
 
 #top{
-  margin-left: 7.5%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  height: 70px;
 }
 
 .flexcontainer-row{
@@ -17,6 +29,7 @@ html{
 
 #imglogo{
   line-height: 75px;
+  /*margin-left: 43px;*/
 }
 #imgalurageek
 {
@@ -42,14 +55,18 @@ html{
 .boton-buscar
 {
   background: transparent;
-  border: none;
   outline: none;
+  border: none;
   margin-left: -43px;
-  margin-top:  -20px;
+  align-self: flex-start;
+  margin-top:  16px;
 }
 
 .boton-buscar img{
+  /*width: 20px;
+  height: 20px;*/
   object-fit: cover;
+  /*align-self: center;*/
 }
 
 .boton-blanco {
@@ -62,9 +79,95 @@ html{
 }
 
 #boton-login {
-  margin-left: 400px;
+ margin-left: 400px;
+  /*margin-top: 10px;*/
 }
 
+#banner {
+  /*display:  none;*/
+  /*position: relative;*/
+  /*top: 70px;*/
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: flex-start;
+  padding: 0px 0px 32px 110px;
+  width:  100%;
+  height: 352px;
+  font-weight: bold;
+  /*height: 300px;*/
+  background-image: url("./img/banner-image.png");
+}
+
+#titulobanner {
+  /*margin-left: 152px;*/
+  color: white;
+  font-size: 52px;
+  line-height: 70px;
+}
+
+#subtitulobanner {
+  color: white;
+  font-size: 22px;
+  line-height: 32px;
+  /*margin-left: 152px;*/
+}
+
+#botonconsolas {
+  background-color: #2A7AE4;
+  border: none;
+  color: white;
+  height: 51px;
+  /*margin-left: 152px;*/
+  /*padding: 15px;*/
+  margin-top: 5px;
+  padding: 0px 15px 0px 15px;
+
+  vertical-align: middle;
+}
+
+#productos {
+  margin-bottom: 60px;
+}
+.categoria {
+  margin-top: 30px;
+}
+
+.titulocategoria {
+  margin-left: 110px;
+  font-size: 32px;
+  font-weight: bold;
+  line-height: 50px;
+}
+
+.listaproductos {
+  /*margin-left: 144px;*/
+  display: flex;
+  flex-direction: row;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.itemproducto {
+  margin-right: 10px;
+}
+
+.tituloproducto {
+  line-height: 25px;
+  font-size: 14px;
+}
+
+.linkproducto {
+  font-size:  16px;
+  font-weight: bold;
+  color: #2A7AE4;
+}
+
+.precioproducto {
+  line-height: 35px;
+  font-size:  16px;
+  font-weight: bold;
+}
 
 /* raleway-regular - latin */
 @font-face {
@@ -80,21 +183,19 @@ html{
        url('fonts/raleway-v26-latin-regular.svg#Raleway') format('svg'); /* Legacy iOS */
 }
 
-body {
-  background-color: #fcf5f5;
-  font-family: Tahoma, Verdana, Geneva, sans-serif;
-  margin: .5em;
+.rodapie{
+  background-color: #EAF2FD;
+  height: 300px;
+  /*display: flex;*/
 }
 
-
-footer {
+#realizado {
     width:  100%;
-    position: fixed;
-    left: 0;
-    bottom: 0;
+    /*position: fixed;*/
     background-color: #333;
     color: white;
     text-align: center;
+    /*align-self: flex-end;*/
     opacity: 0.9;
     margin: .5em;
   }
