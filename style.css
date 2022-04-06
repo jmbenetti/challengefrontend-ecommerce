@@ -27,14 +27,8 @@ body {
   flex-direction: row;
 }
 
-#imglogo{
+.imglogo{
   line-height: 75px;
-  /*margin-left: 43px;*/
-}
-#imgalurageek
-{
-  line-height: 62px;
-  margin-left: 5px;
 }
 
 .form {
@@ -184,20 +178,72 @@ body {
 }
 
 .rodapie{
+  display: grid;
+  grid-template-areas: 
+    'logo vinculos contacto'
+    'realizado realizado realizado';
   background-color: #EAF2FD;
-  height: 300px;
-  /*display: flex;*/
+}
+
+#arealogo{
+  grid-area: logo;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-top: 20px;
+}
+
+#areavinculos{
+  grid-area: vinculos;
+}
+
+.vinculofooter{
+  line-height: 45px;
+  text-decoration: none;
+  color: black ;
+}
+
+#areacontacto{
+  grid-area: contacto;
+}
+
+#formcontacto{
+  display: flex;
+  flex-direction: column;
+}
+
+#formcontacto p{
+  line-height: 50px;
+}
+
+#formcontacto input{
+  font-size: 16px;
+  margin-bottom: 20px;
+}
+
+#formcontacto textarea{
+  font-size: 16px;
+  height: 5em;
+  margin-bottom: 20px;
+}
+
+#boton-mensaje {
+  background-color: #008CBA;
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  width: 40%;
 }
 
 #realizado {
-    width:  100%;
-    /*position: fixed;*/
+    grid-area: realizado;
     background-color: #333;
     color: white;
     text-align: center;
-    /*align-self: flex-end;*/
-    opacity: 0.9;
-    margin: .5em;
   }
 
   
