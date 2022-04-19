@@ -16,15 +16,24 @@ body {
 }
 
 #top{
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-areas: 
+    'logotop busqueda login';
   justify-content: center;
   height: 70px;
 }
 
-.flexcontainer-row{
-  display: flex;
-  flex-direction: row;
+#logotop {
+  grid-area: logotop;
+  /*width: 580px;*/
+}
+
+#busqueda {
+  grid-area: busqueda;
+}
+
+#login {
+  grid-area: login;
 }
 
 .imglogo{
@@ -91,6 +100,8 @@ body {
   font-weight: bold;
   /*height: 300px;*/
   background-image: url("./img/banner-image.png");
+  background-repeat: no-repeat;
+  background-size: 100% auto;
 }
 
 #titulobanner {
@@ -127,19 +138,32 @@ body {
   margin-top: 30px;
 }
 
+.areatitulocategoria {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.vertodo {
+  width: 100px;
+  margin-left: auto;
+  margin-right: 200px;
+  display: none;
+}
+
 .titulocategoria {
   margin-left: 110px;
   font-size: 32px;
-  font-weight: bold;
+  font-weight: 700;
   line-height: 50px;
+  color: #464646;
 }
 
 .listaproductos {
-  /*margin-left: 144px;*/
-  display: flex;
-  flex-direction: row;
-  align-items: flex-start;
-  justify-content: center;
+    justify-content: center;
+    display: grid;
+    width: 100%;
+    grid-template-columns: auto auto auto auto auto auto;
 }
 
 .itemproducto {
@@ -200,7 +224,9 @@ body {
 .vinculofooter{
   line-height: 45px;
   text-decoration: none;
-  color: black ;
+  size: 16px;
+  font-weight: 500;
+  color: black;
 }
 
 #areacontacto{
@@ -214,6 +240,7 @@ body {
 
 #formcontacto p{
   line-height: 50px;
+  font-weight: bold;
 }
 
 #formcontacto input{
@@ -240,10 +267,159 @@ body {
 }
 
 #realizado {
+    display: flex;
+    height: 100px;
     grid-area: realizado;
-    background-color: #333;
-    color: white;
-    text-align: center;
+    background-color: white;
+    color: #464646;
+    align-items:center;
+    justify-content: center;
   }
 
+  @media (max-width: 1365px) {
+    
+     .campo-buscar
+      {
+        padding: 10px 35px 10px 15px;
+        width: 272px;
+      }
+
+
+      .boton-blanco {
+        width: 180px;
+      }
+
+      #boton-login {
+         margin-left: 100px;
+      }
+
+    #banner {
+          padding: 0px 0px 32px 30px;
+          /*background-size: 120% auto;*/
+          background-image: url("./img/banner-imagenew.png");
+        }
+
+    .itemproducto:nth-child(5), .itemproducto:nth-child(6){
+      display: none;
+    }
+
+
+    .titulocategoria {
+      margin-left: 5px;
+    }
+
+    #boton-mensaje {
+      font-size: 14px;
+      width: 70%;
+    }
+
+}
+
+@media (max-width: 767px) {
+
+      .imglogo img{
+        width: 100px;
+      }
+
+      #top{
+        display: grid;
+        grid-template-areas: 
+          'logotop login busqueda';
+       }
+
+       #busqueda {
+        width: 30px;
+       }
+
+      .campo-buscar
+      {
+        display: none;
+      }
+
+      .boton-buscar {
+        margin-left: 25px;
+      }
+
+      .boton-blanco {
+        width: 133px;
+      }
+
+      #boton-login {
+         margin-left: 30px;
+      }
+
+    #banner {
+          padding: 0px 0px 32px 15px;
+          height: 192px;
+          /*background-image: url("./img/banner-imagenew.png");*/
+        }
+
+      #titulobanner {
+        font-size: 22px;
+        line-height: 32px;  
+      }
+
+      #subtitulobanner {
+        font-size: 14px;
+        font-weight: 600;
+        line-height: 16px;
+        margin-bottom: 15px;
+      }
+
+      #botonconsolas {
+        margin-top: 0px;
+        margin-bottom: 5px;
+        height: 40px;
+      }
+
+    .listaproductos {
+      grid-template-columns: 50% 50%;
+      /*grid-gap: 10px;*/
+    }
+    .itemproducto {
+      margin-left: 5px;
+    }
+    .itemproducto img {
+      width: 95%;
+    }
+    .itemproducto:nth-child(3), .itemproducto:nth-child(4){
+      display: none;
+    }
+
+    /* Siguiente condición ya está en la pantalla más grande */
+    /*.itemproducto:nth-child(5), .itemproducto:nth-child(6){
+      display: none;
+    }*/ 
+
+    .titulocategoria {
+      margin-left: 5px;
+    }
+
+    #boton-mensaje {
+      font-size: 14px;
+      width: 133px;
+      padding: 10px 0px;
+    }
+
+    .rodapie{
+      grid-template-areas: 
+        'logo'
+        'vinculos'
+        'contacto'
+        'realizado';
+    }
+
+    #arealogo img {
+      width: 176px;
+    }
+
+    #areavinculos{
+      text-align: center;
+    }
+
+    .vinculofooter {
+      font-weight: 500;
+    }
+
+}
   
