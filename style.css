@@ -37,6 +37,13 @@ body {
 
  /* --- */
 
+ /*Clase general para flex con orientación horizontal*/
+.flexhorizontal {
+  display: flex;
+  flex-direction: row;
+}
+/*---*/
+
 #top{
   display: grid;
   grid-template-areas: 
@@ -409,6 +416,89 @@ body {
 }
 
 /*Fin de CSS de login*/
+
+/*CSS específico de agregarproducto.html*/
+
+#areaagregar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E5E5E5;
+}
+
+#areaagregarimagen {
+  /*margin: 10px 10px 10px 10px;*/
+}
+
+#imgsubida {
+  width:  200px;
+  height:  100px;
+  background-size: cover;
+  background-image: url("./img/arrastre.png");
+  margin: 10px 0 10px 0;
+}
+
+#areaagregarimagen p {
+  /*display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 10px 10px 10px 10px;*/
+  padding: 0 10px 0 10px;
+  margin:  auto;
+}
+
+#areaagregarimagen button {
+  margin: auto;
+  height: 50px;
+}
+
+#nombreagregado {
+  width: 423px;
+  height: 63.13px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #464646;
+  border-style: none;
+  margin-bottom: 10px;
+}
+
+#precioagregado {
+  width: 423px;
+  height: 63.13px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #464646;
+  border-radius: 4px;
+  margin-bottom: 10px;
+}
+
+#descripcionagregado {
+  width: 423px;
+  height: 80px;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 20px;
+  color: #464646;
+  border-radius: 4px;
+}
+
+#botonagregar {
+  background-color: #2A7AE4;
+  border: none;
+  color: white;
+  height: 51px;
+  margin-top: 10px;
+  padding: 0px 15px 0px 15px;
+  width: 423px;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+/*Fin de CSS de agregarproducto*/
+
+/*Ajustes responsive*/
 
 
   @media (max-width: 1365px) {

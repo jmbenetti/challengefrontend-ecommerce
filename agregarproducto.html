@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=0"/>
-  <title>E-commerce Alura Geek - Login</title>
+  <title>E-commerce Alura Geek - Agregar producto</title>
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -24,13 +24,15 @@
       <button type="button" id="boton-login" class="boton-blanco"><a href="login.html">Login</a></button>
     </div>
 </div> 
-<div id="arealogin">
-  <div id="titulologin"><p>Iniciar sesión</p></div>
-  <div><input type="email" id="maillogin" placeholder="Escriba su correo electrónico"></div>
-  <div><input id="pwdlogin" type="password" placeholder="Escriba su contraseña"></div>
-  <div><button type="button" id="botonentrar" onclick="realizarLogin();">Entrar</button></div>
-  <div id="errorlogin"></div>
+<div id="areaagregar">
+  <div id="areaagregarimagen" class="flexhorizontal"><div id="imgsubida"></div><p>O</p><button type="button" class="boton-blanco" onclick="clickSubir()">Busque en su equipo</button></div>
+  <div><input id="nombreagregado" placeholder="Nombre del producto"></div>
+  <div><input id="precioagregado" type="number" placeholder="Precio del producto"></div>
+  <div><textarea id="descripcionagregado" placeholder="Descripción del producto"></textarea></div>
+  <div><button type="button" id="botonagregar" onclick="agregarProducto();">Agregar producto</button></div>
+  <div id="erroragregar"></div>
 </div>
+<script src="agregarproducto.js"></script>
 <script src="script.js"></script>
 </body>
 <footer class="rodapie">
@@ -48,7 +50,7 @@
       <p>Hable con nosotros</p>
       <input id="inputnombre" placeholder="Nombre"></input>
       <textarea id="mensaje" placeholder="Escribe tu mensaje"></textarea>
-      <button type="submit" id="boton-mensaje" onclick="enviarMensaje();">Enviar mensaje</button>
+      <button type="button" id="boton-mensaje" onclick="enviarMensaje();">Enviar mensaje</button>
       <p id="errormensaje"></p>
     </form>
   </div>

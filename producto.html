@@ -76,7 +76,7 @@
   </div>
 </div>
 
-
+<script src="script.js"></script>
 </body>
 <footer class="rodapie">
   <div id="arealogo" class="imglogo"><img src="./img/alurageek.png"></div>
@@ -93,7 +93,8 @@
       <p>Hable con nosotros</p>
       <input id="inputnombre" placeholder="Nombre"></input>
       <textarea id="mensaje" placeholder="Escribe tu mensaje"></textarea>
-      <button type="submit" id="boton-mensaje">Enviar mensaje</button>
+      <button type="button" id="boton-mensaje" onclick="enviarMensaje();">Enviar mensaje</button>
+      <p id="errormensaje"></p>
     </form>
   </div>
   <div id="realizado">
