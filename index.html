@@ -10,11 +10,9 @@
 <body>
 <div id="top">
     <div id="logotop" class="imglogo">
-      <!-- Logo -->
-      <img src="./img/alurageek.png">
+      <a href="index.html"><img src="./img/alurageek.png"></a>
     </div>
     <div id="busqueda"> 
-      <!-- Buscar -->
       <form action="/" method="GET" class="form">
       <input type="search" placeholder="¿Qué deseas buscar?" class="campo-buscar" />
       <button type="submit" class="boton-buscar"> 
@@ -23,14 +21,13 @@
      </form>
     </div>
     <div id="login">
-      <button type="button" id="boton-login" class="boton-blanco">Login</button>
-      <!-- Login -->
+      <button type="button" id="boton-login" class="boton-blanco"><a href="login.html">Login</a></button>
     </div>
 </div> 
 <div id="banner">
     <p id="titulobanner">Febrero promocional</p>
     <p id="subtitulobanner">Productos selecionados con 33% de descuento</p>
-    <button type="button" id="botonconsolas">Ver consolas</button>
+    <button type="button" id="botonconsolas"><a href="#consolas">Ver consolas</a></button>
 </div>
 <section id="productos">
   <div class="categoria">
@@ -43,7 +40,7 @@
           <div class="imagenproducto"><img src="./img/star-wars1.png"></div>
           <div class="tituloproducto">Producto XYZ</div>
           <div class="precioproducto">$60,00</div>
-          <div class="linkproducto">Ver producto</div>
+          <div class="linkproducto"><a href="producto.html">Ver producto</a></div>
         </div>
         <div class="itemproducto">
           <div class="imagenproducto"><img src="./img/star-wars2.png"></div>
@@ -77,7 +74,7 @@
         </div>
       </div>
     </div>
-    <div class="categoria">
+    <div class="categoria" id="consolas">
       <div class="areatitulocategoria">
         <div class="titulocategoria">Consolas</div>
         <div class="vertodo"><a href="#"><p>Ver todo</p><img src="iconos/flecha.png" /></a></div>

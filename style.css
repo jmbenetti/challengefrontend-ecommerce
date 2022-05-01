@@ -15,6 +15,28 @@ body {
   margin: .5em;
 }
 
+/*Saco el estilo de todos los links*/
+
+ a, a:hover, a:focus, a:active {
+     text-decoration: none;
+     color: inherit;
+ }
+
+ /* --- */
+
+ /* Cambio el estilo de todos los inputs */
+
+  input {
+    border-top-style: hidden;
+    border-right-style: hidden;
+    border-left-style: hidden;
+    border-bottom-style: groove;
+    border-width: 1px;
+    border-color: lightgray;
+  }
+
+ /* --- */
+
 #top{
   display: grid;
   grid-template-areas: 
@@ -123,8 +145,6 @@ body {
   border: none;
   color: white;
   height: 51px;
-  /*margin-left: 152px;*/
-  /*padding: 15px;*/
   margin-top: 5px;
   padding: 0px 15px 0px 15px;
 
@@ -193,6 +213,11 @@ body {
   color: #2A7AE4;
 }
 
+.linkproducto a{
+  text-decoration: none;
+  color: #2A7AE4;
+}
+
 .precioproducto {
   line-height: 35px;
   font-size:  16px;
@@ -246,6 +271,7 @@ body {
 }
 
 #formcontacto{
+  margin-right: 115px;
   display: flex;
   flex-direction: column;
 }
@@ -288,6 +314,103 @@ body {
     justify-content: center;
   }
 
+/*CSS específico de producto.html*/
+
+#productoelegido {
+  margin-left: 110px;
+  margin-right: 110px;
+  display: flex;
+  flex-direction: row;
+}
+
+#imagenelegido img {
+  /*width: 560px;*/
+}
+
+#tituloelegido {
+  margin-left: 10px;
+  margin-top: 50px;
+  font-weight: 600;
+  font-size: 52px;
+  line-height: 61px;
+  color: #464646;
+}
+
+#precioelegido {
+  margin-left: 10px;
+  margin-top: 10px;
+  font-weight: 700;
+  font-size: 16px;
+  line-height: 19px;
+  color: #464646;
+}
+
+#descripcionelegido {
+  margin-left: 10px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 19px;
+  color: #464646;
+}
+
+#bloquesimilares {
+  margin-bottom:  50px;
+}
+
+/*--- fin CSS producto.html*/
+
+/*CSS específico de login.html*/
+
+#arealogin {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #E5E5E5;
+}
+
+#titulologin {
+  font-weight: bold;
+  font-size: 18px;
+  line-height: 60px;
+  color: #464646;
+}
+
+#maillogin {
+  width: 423px;
+  height: 63.13px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #464646;
+  border-style: none;
+  margin-bottom: 10px;
+}
+
+#pwdlogin {
+  width: 423px;
+  height: 63.13px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #464646;
+  border-radius: 4px;
+}
+
+#botonentrar {
+  background-color: #2A7AE4;
+  border: none;
+  color: white;
+  height: 51px;
+  margin-top: 10px;
+  padding: 0px 15px 0px 15px;
+  width: 423px;
+  vertical-align: middle;
+  margin-bottom: 10px;
+}
+
+/*Fin de CSS de login*/
+
+
   @media (max-width: 1365px) {
     
      .campo-buscar
@@ -328,6 +451,10 @@ body {
       font-size: 14px;
       width: 70%;
     }
+
+    #formcontacto{
+      margin-right: 15px;
+  }
 
 }
 
@@ -387,6 +514,11 @@ body {
         margin-bottom: 5px;
         height: 40px;
       }
+
+      /*#botonconsolas a{
+        text-decoration: none;
+        color: white;
+      }*/
 
     .listaproductos {
       grid-template-columns: 50% 50%;
