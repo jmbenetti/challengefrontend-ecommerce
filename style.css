@@ -524,10 +524,6 @@ body {
           background-image: url("./img/banner-imagenew.png");
         }
 
-    .itemproducto:nth-child(5), .itemproducto:nth-child(6){
-      display: none;
-    }
-
     .areatitulocategoria {
          display: grid;
          grid-template-columns: 1fr 100px;
@@ -545,6 +541,80 @@ body {
     #formcontacto{
       margin-right: 15px;
   }
+
+  /*Responsive Login*/
+
+  #maillogin {
+      width: 275px;
+    }
+
+    #pwdlogin {
+      width: 275px;
+    }
+
+    #botonentrar {
+      width:  109px;
+    }
+
+    /*---*/
+
+    /*Responsive de agregar producto*/
+
+
+    #areaagregarimagen {
+      padding-right: 290px;
+    }
+
+    #nombreagregado, #precioagregado, #descripcionagregado {
+      width: 704px;
+    }
+
+    /**/
+
+    /*Responsive de producto.html*/
+
+/*    .listaproductos {
+      grid-template-columns: 50% 50%;
+    }
+    .itemproducto {
+      margin-left: 5px;
+    }
+    .itemproducto img {
+      width: 95%;
+    }*/
+    .itemproducto:nth-child(3), .itemproducto:nth-child(4){
+      display: none;
+    }
+
+    #productoelegido {
+      margin-left: 32px;
+      margin-right: 32px;
+    }
+/*
+    #imagenelegido {
+      width: 100%;
+    }*/
+
+ /*   #detalleselegido {
+      height: ;
+    }*/
+
+    #imagenelegido img{
+      width: 254px;
+      heigth: 157px;
+    }
+
+    #tituloelegido {
+      margin: 0 0 10px 0;
+      font-size: 22px;
+      line-height: 26px;
+    }
+
+    #descripcionelegido {
+      font-size: 14px;
+    }
+    /**/
+
 
 }
 
@@ -610,20 +680,6 @@ body {
         color: white;
       }*/
 
-    .listaproductos {
-      grid-template-columns: 50% 50%;
-      /*grid-gap: 10px;*/
-    }
-    .itemproducto {
-      margin-left: 5px;
-    }
-    .itemproducto img {
-      width: 95%;
-    }
-    .itemproducto:nth-child(3), .itemproducto:nth-child(4){
-      display: none;
-    }
-
     /* Siguiente condición ya está en la pantalla más grande */
     /*.itemproducto:nth-child(5), .itemproducto:nth-child(6){
       display: none;
@@ -669,6 +725,71 @@ body {
     .vinculofooter {
       font-weight: 500;
     }
+
+    /*Responsive de agregar producto*/
+
+
+    #areaagregarimagen {
+      padding-right: 0px;
+    }
+
+    #letrao, #imgsubida {
+      display: none;
+    }
+
+    #areaagregarimagen button {
+      width: 328px;
+      height: 134px;
+      background-image: url("./img/agregarfoto.png");
+      background-size: cover;
+      font-size: 0;
+      margin-bottom: 16px;
+    }
+
+    #nombreagregado, #precioagregado, #descripcionagregado {
+      width: 328px;
+    }
+
+    /**/
+
+    /*Responsive de producto.html*/
+
+    .listaproductos {
+      grid-template-columns: 50% 50%;
+      /*grid-gap: 10px;*/
+    }
+    .itemproducto {
+      margin-left: 5px;
+    }
+    .itemproducto img {
+      width: 95%;
+    }
+    .itemproducto:nth-child(3), .itemproducto:nth-child(4){
+      /*display: none;*/
+    }
+
+    #productoelegido {
+      flex-direction: column;
+      margin-left: 0;
+      margin-right: 0;
+    }
+
+    #imagenelegido {
+      width: 100%;
+    }
+
+    #imagenelegido img{
+      width: 100%;
+    }
+
+    #descripcionelegido {
+      font-size: 14px;
+    }
+
+    /**/
+
+
+    
 
 }
   
