@@ -737,14 +737,25 @@ body {
       display: none;
     }
 
-    #areaagregarimagen button {
+    #imgsubida {
+      display: block;
+      width: 328px;
+      height: 134px;
+      background-image: url("./img/agregarfoto.png");
+    }
+
+    #letrao, #areaagregarimagen button {
+      display: none;
+    }
+
+    /*#areaagregarimagen button {
       width: 328px;
       height: 134px;
       background-image: url("./img/agregarfoto.png");
       background-size: cover;
       font-size: 0;
       margin-bottom: 16px;
-    }
+    }*/
 
     #nombreagregado, #precioagregado, #descripcionagregado {
       width: 328px;

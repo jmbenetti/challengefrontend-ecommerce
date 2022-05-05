@@ -31,6 +31,11 @@ readImage = (file) => {
   bImagenCargada = true;
 }
 
+function clickImgsubida()
+{
+  if(screen.width < 768){clickSubir()};
+}
+
 function clickSubir() {
   //Creo un campo input para recibir el archivo
   let input = document.createElement('input');
