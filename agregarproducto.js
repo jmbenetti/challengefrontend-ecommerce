@@ -73,6 +73,14 @@ function agregarProducto() {
     document.querySelector("#nombreagregado").value = ""; 
     document.querySelector("#precioagregado").value = ""; 
     document.querySelector("#descripcionagregado").value = "";
-    divImagen.style.backgroundImage = "url('./img/arrastre.png')";
+    if(screen.width < 768){
+      divImagen.style.backgroundImage = "url('./img/agregarfoto.png')";
+    }
+    else
+    {
+      divImagen.style.backgroundImage = "url('./img/arrastre.png')";
+    }
+
+
   }
 }
