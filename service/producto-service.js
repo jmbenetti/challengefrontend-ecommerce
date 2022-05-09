@@ -1,5 +1,5 @@
-const servidorJSON = "https://heroku-json-jmb.herokuapp.com/productos";
-//const servidorJSON = "http://localhost:3000/productos";
+// const servidorJSON = "https://heroku-json-jmb.herokuapp.com/productos";
+const servidorJSON = "http://localhost:3000/productos";
 
 const listaProductos = () => fetch(servidorJSON).then(respuesta => respuesta.json());
 
