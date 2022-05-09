@@ -1,4 +1,4 @@
-import { productServices } from "../service/producto-service.js";
+// import { productServices } from "../service/producto-service.js";
 
 // const crearNuevaLinea = (nombre, email, id) => {
 //     const linea = document.createElement("tr");
