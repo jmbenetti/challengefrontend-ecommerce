@@ -1,0 +1,11 @@
+{
+"productos": [
+    {
+      "nombre": "Taza stormtrooper",
+      "precio": "60.00",
+      "categoria": "Star Wars",
+      "imagen": "", 
+      "id": 1
+    }
+  ]
+}
