@@ -1,22 +1,23 @@
 {
   "name": "admin",
   "version": "1.0.0",
-  "description": "1836-crud_js_async project",
-  "main": "index.js",
+  "description": "Challenge front-end ecommerce",
+  "main": "index.html",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/HarlandLohora/1836-CRUD_JS_Async.git"
+    "url": "git+https://github.com/jmbenetti/challengefrontend-ecommerce.git"
   },
   "keywords": [
     "Alura"
   ],
-  "author": "Harland Lohora",
+  "author": "José Manuel Benetti",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/HarlandLohora/1836-CRUD_JS_Async/issues"
+    "url": "https://github.com/jmbenetti/challengefrontend-ecommerce/issues"
   },
-  "homepage": "https://github.com/HarlandLohora/1836-CRUD_JS_Async#readme"
+  "homepage": "https://jmbenetti.github.io/challengefrontend-ecommerce/"
 }
+

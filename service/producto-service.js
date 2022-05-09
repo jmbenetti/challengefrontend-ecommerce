@@ -1,7 +1,10 @@
-const listaProductos = () => fetch("http://localhost:3000/productos").then(respuesta => respuesta.json());
+const servidorJSON = "https://heroku-json-jmb.herokuapp.com/productos";
+//const servidorJSON = "http://localhost:3000/productos";
+
+const listaProductos = () => fetch(servidorJSON).then(respuesta => respuesta.json());
 
 const crearProducto = (nombre, precio, categoria, imagen) => {
-    return fetch("http://localhost:3000/productos", 
+    return fetch(servidorJSON, 
     {
         method: "POST",
         headers: {
@@ -13,7 +16,8 @@ const crearProducto = (nombre, precio, categoria, imagen) => {
 }
 
 const eliminarProducto = (id) => {
-    return fetch(`http://localhost:3000/productos/${id}`,
+    //return fetch(`http://localhost:3000/productos/${id}`,
+    return fetch(servidorJSON + id,
     {
         method: "DELETE",
     })
