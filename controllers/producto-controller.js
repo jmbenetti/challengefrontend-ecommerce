@@ -32,7 +32,6 @@ import { productServices } from "../service/producto-service.js";
 //     });
 //     return linea;
 // }
-
 // const table = document.querySelector("[data-table]");
 
 console.log("producto-controller");
