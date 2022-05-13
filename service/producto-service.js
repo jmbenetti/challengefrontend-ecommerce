@@ -14,14 +14,14 @@ else
 
 const listaProductos = () => fetch(servidorJSON).then(respuesta => respuesta.json());
 
-const crearProducto = (nombre, precio, categoria, imagen) => {
+const crearProducto = (nombre, precio, descripcion, categoria, imagen) => {
     return fetch(servidorJSON, 
     {
         method: "POST",
         headers: {
             "Content-Type": "application/json"
         }, 
-        body: JSON.stringify({nombre, precio, categoria, imagen, id: uuid.v4()}),
+        body: JSON.stringify({nombre, precio, descripcion, categoria, imagen, id: uuid.v4()}),
 
     })
 }

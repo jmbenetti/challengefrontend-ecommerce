@@ -7,7 +7,7 @@ const imagenPrueba = `data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAALAAAACuCAYA
 const listarProducto = (nombre, precio, categoria, imagen, id) => {
     const linea = document.createElement("div");
     linea.className = "itemproducto";
-    const contenido = ` <div class="imagenproducto"><img src="${imagenPrueba}"></div>
+    const contenido = ` <div class="imagenproducto"><img src="${imagen}"></div>
     <div class="tituloproducto">${nombre}</div>
     <div class="precioproducto">\$${precio}</div>
     <div class="linkproducto"><a href="producto.html">Ver producto</a></div>`;
@@ -18,7 +18,7 @@ const listarProducto = (nombre, precio, categoria, imagen, id) => {
 
 //     const contenido = `<td class="td" data-td>${nombre}</td>
 
-console.log("producto-controller");
+// console.log("producto-controller");
 
 productServices.listaProductos().then((data) => {
     data.forEach(({nombre, precio, categoria, imagen, id}) => {

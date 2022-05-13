@@ -209,6 +209,11 @@ body {
   margin-right: 10px;
 }
 
+.itemproducto img {
+  width: 176px;
+  height: 174px;
+}
+
 .tituloproducto {
   line-height: 25px;
   font-size: 14px;
@@ -450,6 +455,17 @@ body {
 #areaagregarimagen button {
   margin: auto;
   height: 50px;
+}
+
+#selectcategoria {
+  width:423px;
+  height: 63.13px;
+  font-weight: 400;
+  font-size: 16px;
+  line-height: 20px;
+  color: #464646;
+  border-style: none;
+  margin-bottom: 10px;
 }
 
 #nombreagregado {

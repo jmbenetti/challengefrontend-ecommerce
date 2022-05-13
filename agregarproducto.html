@@ -25,15 +25,23 @@
     </div>
 </div> 
 <div id="areaagregar">
-  <div id="areaagregarimagen" class="flexhorizontal"><div id="imgsubida" onclick="clickImgsubida()"></div><p id="letrao">O</p><button type="button" class="boton-blanco" onclick="clickSubir()">Busque en su equipo</button></div>
+  <div id="areaagregarimagen" class="flexhorizontal"><div id="imgsubida"></div><p id="letrao">O</p><button type="button" class="boton-blanco" id="botonsubir">Busque en su equipo</button></div>
+  <div>
+    <select name="categoriaagregado" id="selectcategoria">
+      <option value="" disabled selected>Seleccione una categoría</option>
+      <option value="starwars">Star Wars</option>
+      <option value="consolas">Consolas</option>
+      <option value="diversos">Diversos</option>
+   </select>
+  </div>
   <div><input id="nombreagregado" placeholder="Nombre del producto"></div>
   <div><input id="precioagregado" type="number" placeholder="Precio del producto"></div>
   <div><textarea id="descripcionagregado" placeholder="Descripción del producto"></textarea></div>
-  <div><button type="button" id="botonagregar" onclick="agregarProducto();">Agregar producto</button></div>
+  <div><button type="button" id="botonagregar">Agregar producto</button></div>
   <div id="erroragregar"></div>
 </div>
-<script src="agregarproducto.js"></script>
 <script src="script.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/uuid/8.3.2/uuid.min.js" integrity="sha512-UNM1njAgOFUa74Z0bADwAq8gbTcqZC8Ej4xPSzpnh0l6KMevwvkBvbldF9uR++qKeJ+MOZHRjV1HZjoRvjDfNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 <script type="module" src="../controllers/agregarproducto-controller.js"></script>
 </body>
 <footer class="rodapie">
