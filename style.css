@@ -161,6 +161,7 @@ body {
 #productos {
   margin-bottom: 60px;
 }
+
 .categoria {
   margin-top: 30px;
 }
@@ -589,18 +590,20 @@ body {
 
     /*Responsive de producto.html*/
 
-/*    .listaproductos {
-      grid-template-columns: 50% 50%;
+    .listaproductos {
+      grid-template-columns: 16.67% 16.67% 16.67% 16.67%;
+      /*grid-gap: 10px;*/
     }
+
     .itemproducto {
       margin-left: 5px;
     }
     .itemproducto img {
       width: 95%;
-    }*/
-    .itemproducto:nth-child(3), .itemproducto:nth-child(4){
-      display: none;
     }
+    /* .itemproducto:nth-child(3), .itemproducto:nth-child(4){
+      display: none;
+    } */
 
     #productoelegido {
       margin-left: 32px;
