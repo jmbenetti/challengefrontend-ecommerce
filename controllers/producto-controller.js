@@ -1,17 +1,49 @@
 import { productServices } from "../service/producto-service.js";
+
 const urlActual = window.location.search;
 const SearchParams = new URLSearchParams(urlActual);
+var categoriaElegido = "";
 let verTodo = "";
 // if(SearchParams.has("vertodo"))
 // {
     verTodo = SearchParams.get("vertodo")=="true";
 // }
 
-//SEGUIR POR ACÁ
-let nombreBuscado = "";
-nombreBuscado = SearchParams.get("nombre")=="true";
+//para buscar por nombre
+// let nombreBuscado = "";
+// nombreBuscado = SearchParams.get("nombre");
     
- 
+let idBuscado = "";
+if(SearchParams.has("id")) {
+    idBuscado = SearchParams.get("id");
+ }
+
+if(idBuscado==""){
+    document.querySelector("#productoelegido").style.display = "none";
+}
+else
+{
+    // console.log("Buscando por id");
+    productServices.listaProductos("/" + idBuscado).then((data)=>{
+    
+        // data.forEach(({nombre, precio, categoria, imagen, id}) => {
+            // console.log("Nombre encontrado" + data.nombre);
+        // });
+        document.querySelector("#imagenelegido img").src = data.imagen;
+        document.querySelector("#imagenelegido img").style.width = "560px";
+        document.querySelector("#tituloelegido").innerHTML = data.nombre;
+        document.querySelector("#precioelegido").innerHTML = data.precio;
+        document.querySelector("#descripcionelegido").innerHTML = data.descripcion;
+        categoriaElegido = data.categoria;
+        
+    
+    })
+}
+// console.log(idBuscado);
+
+
+
+//MOSTRAR CATEGORÍA DEL MISMO PRODUCTO CON EL NOMBRE DE PRODUCTOS SIMILARES Y OCULTAR EL RESTO
 
 const listarProducto = (nombre, precio, categoria, imagen, id) => {
     const linea = document.createElement("div");
@@ -19,7 +51,7 @@ const listarProducto = (nombre, precio, categoria, imagen, id) => {
     const contenido = ` <div class="imagenproducto"><img src="${imagen}"></div>
     <div class="tituloproducto">${nombre}</div>
     <div class="precioproducto">\$${precio}</div>
-    <div class="linkproducto"><a href="producto.html">Ver producto</a></div>`;
+    <div class="linkproducto"><a href="index.html?id=${id}">Ver producto</a></div>`;
     linea.innerHTML = contenido;
     return linea;
 }
@@ -29,12 +61,12 @@ productServices.listaProductos().then((data) => {
 
     //Cambio el máximo de productos para tablet
     if (window.matchMedia("(min-width: 768px)").matches && window.matchMedia("(max-width: 1365px)").matches){
-        console.log("tablet");
+        // console.log("tablet");
         maxItems=4;
     }
     //Y para celular
     if (window.matchMedia("(max-width: 767px)").matches){
-        console.log("celular");
+        // console.log("celular");
         maxItems=2;
     }
 
@@ -58,6 +90,8 @@ productServices.listaProductos().then((data) => {
                 const parentCategoria = document.querySelector(".lista" + nombreCategoria).closest(".categoria");
                 parentCategoria.style.display="none";
             })
+        //oculto el banner
+        document.querySelector("#banner").style.display = "none";
         }
 
     data.forEach(({nombre, precio, categoria, imagen, id}) => {

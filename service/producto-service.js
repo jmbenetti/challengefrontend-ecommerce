@@ -12,7 +12,7 @@ else
     servidorJSON = servidorLocal;
 }
 
-const listaProductos = () => fetch(servidorJSON).then(respuesta => respuesta.json());
+const listaProductos = (query = "") => fetch(servidorJSON + query).then(respuesta => respuesta.json());
 
 const crearProducto = (nombre, precio, descripcion, categoria, imagen) => {
     return fetch(servidorJSON, 
