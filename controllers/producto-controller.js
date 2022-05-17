@@ -2,6 +2,8 @@ import { productServices } from "../service/producto-service.js";
 
 const urlActual = window.location.search;
 const SearchParams = new URLSearchParams(urlActual);
+
+var busquedaPorNombre = false;
 var categoriaElegido = "";
 let verTodo = "";
 // if(SearchParams.has("vertodo"))
@@ -9,9 +11,38 @@ let verTodo = "";
     verTodo = SearchParams.get("vertodo")=="true";
 // }
 
-//para buscar por nombre
-// let nombreBuscado = "";
-// nombreBuscado = SearchParams.get("nombre");
+//Para buscar por nombre parcial o total
+
+const inputBuscar = document.querySelector(".campo-buscar");
+inputBuscar.addEventListener("keyup", (event) => {
+    event.stopPropagation();
+    event.preventDefault();
+    if (event.keyCode === 13) {
+        // buscarPorNombre();
+        botonBuscar.click();
+    }
+});
+
+const botonBuscar = document.querySelector(".boton-buscar");
+//botonBuscar.addEventListener("click", buscarPorNombre);
+botonBuscar.addEventListener("click", (event) => {
+    // alert("Buscando por nombre new");
+    const listaGeneral = productServices.listaProductos().then((data) => {
+        // console.log("Buscando lista general");
+        // console.log(data);
+        var newArray = data.filter(function (filtrado) {
+            return filtrado.nombre.toLowerCase().includes(inputBuscar.value.toLowerCase()) ||
+                filtrado.descripcion.toLowerCase().includes(inputBuscar.value.toLowerCase());
+          });
+        // console.log(newArray);
+        busquedaPorNombre = true;
+        llenarProductos(newArray);
+    });    
+    
+});
+
+
+
     
 let idBuscado = "";
 if(SearchParams.has("id")) {
@@ -24,7 +55,7 @@ if(idBuscado==""){
 else
 {
     // console.log("Buscando por id");
-    productServices.listaProductos("/" + idBuscado).then((data)=>{
+    productServices.verProducto(idBuscado).then((data)=>{
     
         // data.forEach(({nombre, precio, categoria, imagen, id}) => {
             // console.log("Nombre encontrado" + data.nombre);
@@ -56,70 +87,109 @@ const listarProducto = (nombre, precio, categoria, imagen, id) => {
     return linea;
 }
 
-productServices.listaProductos().then((data) => {
-    let maxItems = 6; //Máximo de productos por categoría en vista de categorías
-
-    //Cambio el máximo de productos para tablet
-    if (window.matchMedia("(min-width: 768px)").matches && window.matchMedia("(max-width: 1365px)").matches){
-        // console.log("tablet");
-        maxItems=4;
-    }
-    //Y para celular
-    if (window.matchMedia("(max-width: 767px)").matches){
-        // console.log("celular");
-        maxItems=2;
-    }
-
-    let productosMostrados = {
-        starwars: "0",
-        consolas: "0",
-        diversos: "0" 
-    }
+function llenarProductos(filtrado = null){
     
+    productServices.listaProductos().then((data) => {
+        let maxItems = 6; //Máximo de productos por categoría en vista de categorías
+    
+        //Cambio el máximo de productos para tablet
+        if (window.matchMedia("(min-width: 768px)").matches && window.matchMedia("(max-width: 1365px)").matches){
+            // console.log("tablet");
+            maxItems=4;
+        }
+        //Y para celular
+        if (window.matchMedia("(max-width: 767px)").matches){
+            // console.log("celular");
+            maxItems=2;
+        }
+    
+        let productosMostrados = {
+            starwars: "0",
+            consolas: "0",
+            diversos: "0" 
+        }
+        
+    
+        //Si estoy buscando por nombre borro el contenido de todas las categorías
 
-    //Si no di la orden de mostrar todos los productos...
-    if(!verTodo){
-        //busco el div de la categoría de todos los productos buscando el parent del de la lista y lo oculto
-        const parentCategoria = document.querySelector(".listatodo").closest(".categoria");
-        parentCategoria.style.display="none";
-    }
-    else{
-        //oculto los divs de las otras categorías para mandar todo a la general
-        const ocultarCategorias = ["starwars", "consolas", "diversos"];
-        ocultarCategorias.forEach((nombreCategoria) => {
-                const parentCategoria = document.querySelector(".lista" + nombreCategoria).closest(".categoria");
-                parentCategoria.style.display="none";
+
+        if(filtrado!==null)
+        {
+            // alert("asfasf");
+            const todasLasCategorias = ["todo", "starwars", "consolas", "diversos"];
+            todasLasCategorias.forEach((nombreCategoria) => {
+                document.querySelector(".lista" + nombreCategoria).innerHTML = "";
+                console.log("Borrando .lista" + nombreCategoria);
             })
-        //oculto el banner
-        document.querySelector("#banner").style.display = "none";
+            const productoElegido = document.querySelector("#productoelegido");
+            productoElegido.style.display = "none";
+            data = filtrado;
+            verTodo = true;
         }
 
-    data.forEach(({nombre, precio, categoria, imagen, id}) => {
-        let listaCategoria = "";
-        let nuevaLinea = "";
-        //console.log(verTodo==true);
-        if(verTodo)
-        {
-            // console.log("ok");
-            listaCategoria = document.querySelector(".listatodo");
-            //console.log(listaCategoria.closest(".categoria").innerHTML);
-            nuevaLinea = listarProducto(nombre, precio, categoria, imagen, id); 
-            listaCategoria.appendChild(nuevaLinea);
+        //---
+
+        //Si no di la orden de mostrar todos los productos...
+        if(!verTodo){
+            //busco el div de la categoría de todos los productos buscando el parent del de la lista y lo oculto
+            const parentCategoria = document.querySelector(".listatodo").closest(".categoria");
+            parentCategoria.style.display="none";
         }
-        else
-        {
-            listaCategoria = document.querySelector(".lista" + categoria);
-            productosMostrados[categoria]++;
-            // console.log("Mostrados " + categoria + "=" + productosMostrados[categoria]); 
-            if(productosMostrados[categoria]<= maxItems)
+        else{
+            //oculto los divs de las otras categorías para mandar todo a la general
+            const ocultarCategorias = ["starwars", "consolas", "diversos"];
+            ocultarCategorias.forEach((nombreCategoria) => {
+                    const parentCategoria = document.querySelector(".lista" + nombreCategoria).closest(".categoria");
+                    parentCategoria.style.display="none";
+                })
+            //oculto el banner
+            document.querySelector("#banner").style.display = "none";
+
+            //Muestro la lista de todas las categorias
+            const parentTodo = document.querySelector(".listatodo").closest(".categoria");
+            parentTodo.style.display="block";
+            
+            //Si llegué por búsqueda, cambio el título
+            if(filtrado!==null)
             {
+                const tituloTodo = document.querySelector(".titulotodo");
+                tituloTodo.innerHTML = "Resultados de la búsqueda";
+            }
+            
+        }
+
+        data.forEach(({nombre, precio, categoria, imagen, id}) => {
+            let listaCategoria = "";
+            let nuevaLinea = "";
+            //console.log(verTodo==true);
+            if(verTodo)
+            {
+                // console.log("ok");
+                listaCategoria = document.querySelector(".listatodo");
+                //console.log(listaCategoria.closest(".categoria").innerHTML);
                 nuevaLinea = listarProducto(nombre, precio, categoria, imagen, id); 
                 listaCategoria.appendChild(nuevaLinea);
             }
-        }
-
-      
+            else
+            {
+                listaCategoria = document.querySelector(".lista" + categoria);
+                productosMostrados[categoria]++;
+                // console.log("Mostrados " + categoria + "=" + productosMostrados[categoria]); 
+                if(productosMostrados[categoria]<= maxItems)
+                {
+                    nuevaLinea = listarProducto(nombre, precio, categoria, imagen, id); 
+                    listaCategoria.appendChild(nuevaLinea);
+                }
+            }
     
-});
-})
+          
+        
+    });
+    })
+
+}
+
+llenarProductos();
+
+
 //AGREGAR .catch((error) => alert("Error en la operación: " + error));

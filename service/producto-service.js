@@ -12,7 +12,16 @@ else
     servidorJSON = servidorLocal;
 }
 
-const listaProductos = (query = "") => fetch(servidorJSON + query).then(respuesta => respuesta.json());
+const listaProductos = () => fetch(servidorJSON).then(respuesta => respuesta.json());
+const verProducto = (idBuscado) => fetch(servidorJSON + "/" + idBuscado).then(respuesta => respuesta.json());
+// const buscarPorNombre = (nombreBuscado) => {
+//     const listaGeneral = listaProductos().then((data) => {
+//         data.forEach(({nombre, precio, categoria, imagen, id}) => {
+//             console.log(nombre);
+//         });
+//     }).then(return "prueba");
+//     return "prueba";
+// }
 
 const crearProducto = (nombre, precio, descripcion, categoria, imagen) => {
     return fetch(servidorJSON, 
@@ -35,6 +44,8 @@ const eliminarProducto = (id) => {
 }
 
 export const productServices = {
+    // buscarPorNombre,
+    verProducto,
     listaProductos,
     crearProducto,
     eliminarProducto,
