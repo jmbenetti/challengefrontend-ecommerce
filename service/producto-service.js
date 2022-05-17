@@ -37,7 +37,7 @@ const crearProducto = (nombre, precio, descripcion, categoria, imagen) => {
 
 const eliminarProducto = (id) => {
     //return fetch(`http://localhost:3000/productos/${id}`,
-    return fetch(servidorJSON + id,
+    return fetch(servidorJSON + "/" + id,
     {
         method: "DELETE",
     })

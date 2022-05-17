@@ -66,15 +66,28 @@ else
         document.querySelector("#precioelegido").innerHTML = data.precio;
         document.querySelector("#descripcionelegido").innerHTML = data.descripcion;
         categoriaElegido = data.categoria;
-        
-    
+        const linkEliminar = document.querySelector("#linkeliminar");
+        linkEliminar.addEventListener("click", (event) => {
+            event.stopPropagation();
+            event.preventDefault();
+            // console.log("Eliminar " + idBuscado)
+            // console.log("ocultando div");
+            if(confirm("¿Está seguro de que desea eliminar el producto?"))
+                {
+                        document.querySelector("#productoelegido").style.display = "none";
+                        productServices.eliminarProducto(idBuscado).then(()=>{
+                        // alert("Producto eliminado.");
+                        idBuscado = "";
+                        window.location.href = "index.html?vertodo=true";
+                    });
+                }
+        } );
+
     })
 }
 // console.log(idBuscado);
 
 
-
-//MOSTRAR CATEGORÍA DEL MISMO PRODUCTO CON EL NOMBRE DE PRODUCTOS SIMILARES Y OCULTAR EL RESTO
 
 const listarProducto = (nombre, precio, categoria, imagen, id) => {
     const linea = document.createElement("div");
