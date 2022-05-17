@@ -1,4 +1,4 @@
-const REMOTO = false;
+const REMOTO = true;
 
 const servidorRemoto = "https://heroku-json-jmb.herokuapp.com/productos";
 const servidorLocal = "http://localhost:3000/productos";
@@ -36,16 +36,27 @@ const crearProducto = (nombre, precio, descripcion, categoria, imagen) => {
 }
 
 const eliminarProducto = (id) => {
-    //return fetch(`http://localhost:3000/productos/${id}`,
     return fetch(servidorJSON + "/" + id,
     {
         method: "DELETE",
     })
 }
 
+const actualizarProducto = (nombre, precio, descripcion, categoria, imagen, id) => {
+    return fetch(servidorJSON + "/" + id,
+    {
+        method: "PUT",
+        headers: {
+            "Content-Type": "application/json"
+        }, 
+        body: JSON.stringify({nombre, precio, descripcion, categoria, imagen, id: uuid.v4()}),
+    })
+}
+
 export const productServices = {
     // buscarPorNombre,
     verProducto,
+    actualizarProducto,
     listaProductos,
     crearProducto,
     eliminarProducto,

@@ -1,17 +1,11 @@
 import { productServices } from "../service/producto-service.js";
 let imagenBase64="";
 
-// const formulario = document.querySelector("[data-form]");
-// formulario.addEventListener("submit", (events) => {
-//     events.preventDefault();
+const urlActual = window.location.search;
+const SearchParams = new URLSearchParams(urlActual);
 
-//     const nombre = document.querySelector("[data-nombre]").value;
-//     const email = document.querySelector("[data-email]").value;
-//     clientServices.crearCliente(nombre, email).then(() => {
-//         window.location.href = "/screens/registro_completado.html"
-//     }).catch(err => console.log(err));
+let idEditado = "";
 
-// })
 
 const botonSubir = document.querySelector("#botonsubir");
 botonSubir.addEventListener("click",clickSubir);
@@ -21,6 +15,36 @@ divImagen.addEventListener("click", clickImgsubida);
 
 const botonAgregar = document.querySelector("#botonagregar");
 botonAgregar.addEventListener("click", agregarProducto);
+
+if(SearchParams.get("editar")!==null) 
+  {
+    idEditado = SearchParams.get("editar");
+    console.log("Editando: " + idEditado);
+    const botonAgregar = document.querySelector("#botonagregar");
+    botonAgregar.innerHTML = "Modificar producto";
+
+    //LEER DATOS
+
+    productServices.verProducto(idEditado).then((data)=>{
+      console.log("leyendo producto");
+      
+      //Limpio el formato del base64 para que funcione con style.backgroundImage;
+      let url=data.imagen;
+      url = url.replace(/(\r\n|\n|\r)/gm, "");
+      //--
+      divImagen.style.backgroundImage = "url('" + url + "')";
+      bImagenCargada = true;
+      document.querySelector("#nombreagregado").value = data.nombre;
+      document.querySelector("#precioagregado").value = data.precio;
+      document.querySelector("#descripcionagregado").value = data.descripcion;
+      document.querySelector("#selectcategoria").value = data.categoria;
+
+  })
+
+    //---
+
+
+  }
 
 var imgSubida;
 var listaArchivos;
@@ -97,21 +121,44 @@ function agregarProducto() {
 
   if(szError == "")
   {
-    productServices.crearProducto(szNombre, szPrecio, szDescripcionagregado, szCategoriaagregado, imagenBase64).then(() => {
-      alert("Producto agregado correctamente");
-      document.querySelector("#selectcategoria").value = "";
-      document.querySelector("#nombreagregado").value = ""; 
-      document.querySelector("#precioagregado").value = ""; 
-      document.querySelector("#descripcionagregado").value = "";
-    }).catch(err => console.log(err))
-    if(screen.width < 768){
-      divImagen.style.backgroundImage = "url('./img/agregarfoto.png')";
+    if(idEditado=="")
+    {
+
+      productServices.crearProducto(szNombre, szPrecio, szDescripcionagregado, szCategoriaagregado, imagenBase64).then(() => {
+        alert("Producto agregado correctamente.");
+        document.querySelector("#selectcategoria").value = "";
+        document.querySelector("#nombreagregado").value = ""; 
+        document.querySelector("#precioagregado").value = ""; 
+        document.querySelector("#descripcionagregado").value = "";
+      }).catch(err => console.log(err))
+      if(screen.width < 768){
+        divImagen.style.backgroundImage = "url('./img/agregarfoto.png')";
+      }
+      else
+      {
+        divImagen.style.backgroundImage = "url('./img/arrastre.png')";
+      }
+
     }
     else
     {
-      divImagen.style.backgroundImage = "url('./img/arrastre.png')";
-    }
+      if(confirm("¿Está seguro de que desea modificar el producto?"))
+                {
+                  // alert("Se va a modificar el producto");
+                  imagenBase64 = document.querySelector("#imgsubida").style.backgroundImage;
+                  
+                  //limpio la cadena de Base64
+                  imagenBase64 = imagenBase64.replace("url(\"", "");
+                  imagenBase64 = imagenBase64.replace("\")", "");
 
+                  // console.log(imagenBase64);
+
+                  productServices.actualizarProducto(szNombre, szPrecio, szDescripcionagregado, szCategoriaagregado, imagenBase64, idEditado).then(() =>
+                  {
+                    alert("Producto modificado correctamente.");
+                  })
+                }
+    }
 
   }
 }

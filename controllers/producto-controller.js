@@ -10,39 +10,27 @@ let verTodo = "";
 // {
     verTodo = SearchParams.get("vertodo")=="true";
 // }
+let getNombre = ""
+getNombre = SearchParams.get("nombre");
+if(getNombre !== null) {
+    console.log("Se está buscando por nombre: " + getNombre);
+    buscarPorNombre();
+}
+
+let formBuscar = document.querySelector(".form-buscar");
 
 //Para buscar por nombre parcial o total
-
-const inputBuscar = document.querySelector(".campo-buscar");
-inputBuscar.addEventListener("keyup", (event) => {
-    event.stopPropagation();
-    event.preventDefault();
-    if (event.keyCode === 13) {
-        // buscarPorNombre();
-        botonBuscar.click();
-    }
-});
-
-const botonBuscar = document.querySelector(".boton-buscar");
-//botonBuscar.addEventListener("click", buscarPorNombre);
-botonBuscar.addEventListener("click", (event) => {
-    // alert("Buscando por nombre new");
+function buscarPorNombre()
+{
     const listaGeneral = productServices.listaProductos().then((data) => {
-        // console.log("Buscando lista general");
-        // console.log(data);
         var newArray = data.filter(function (filtrado) {
-            return filtrado.nombre.toLowerCase().includes(inputBuscar.value.toLowerCase()) ||
-                filtrado.descripcion.toLowerCase().includes(inputBuscar.value.toLowerCase());
-          });
-        // console.log(newArray);
-        busquedaPorNombre = true;
-        llenarProductos(newArray);
-    });    
-    
-});
-
-
-
+    return filtrado.nombre.toLowerCase().includes(getNombre.toLowerCase()) ||
+        filtrado.descripcion.toLowerCase().includes(getNombre.toLowerCase());
+     });
+   busquedaPorNombre = true;
+   llenarProductos(newArray);
+});    
+}
     
 let idBuscado = "";
 if(SearchParams.has("id")) {
@@ -57,21 +45,18 @@ else
     // console.log("Buscando por id");
     productServices.verProducto(idBuscado).then((data)=>{
     
-        // data.forEach(({nombre, precio, categoria, imagen, id}) => {
-            // console.log("Nombre encontrado" + data.nombre);
-        // });
         document.querySelector("#imagenelegido img").src = data.imagen;
         document.querySelector("#imagenelegido img").style.width = "560px";
         document.querySelector("#tituloelegido").innerHTML = data.nombre;
         document.querySelector("#precioelegido").innerHTML = data.precio;
         document.querySelector("#descripcionelegido").innerHTML = data.descripcion;
         categoriaElegido = data.categoria;
+
         const linkEliminar = document.querySelector("#linkeliminar");
         linkEliminar.addEventListener("click", (event) => {
             event.stopPropagation();
             event.preventDefault();
-            // console.log("Eliminar " + idBuscado)
-            // console.log("ocultando div");
+           
             if(confirm("¿Está seguro de que desea eliminar el producto?"))
                 {
                         document.querySelector("#productoelegido").style.display = "none";
@@ -83,9 +68,10 @@ else
                 }
         } );
 
+        const linkEditar = document.querySelector("#linkeditar");
+        linkEditar.href = "agregarproducto.html?editar=" + idBuscado;
     })
 }
-// console.log(idBuscado);
 
 
 
